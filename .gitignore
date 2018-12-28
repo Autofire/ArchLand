@@ -1,4 +1,5 @@
 .gitconfig
 .bash_history
 .viminfo
+.lesshst
 *.swp
