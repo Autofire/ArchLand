@@ -2,4 +2,6 @@
 .bash_history
 .viminfo
 .lesshst
+.netrwhist
+.local/src/
 *.swp

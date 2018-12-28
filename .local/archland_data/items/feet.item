@@ -3,7 +3,7 @@
 echo -e "Your \e[96mfeet\e[0m allow you to move around"
 echo -e ""
 
-echo -e "  \e[92mcd \e[97mroom-name\e[0m"
+echo -e "  \e[92mcd \e[97m[room name]\e[0m"
 echo -e "Walk into the specified room. Short for \e[92mc\e[0mhange \e[92md\e[0mirectory."
 echo -e ""
 

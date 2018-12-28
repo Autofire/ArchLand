@@ -1,5 +1,9 @@
-It's a piece of paper on the table. It says:
+It's a piece of paper on the table with a printed message. It says:
 
-"Hey, if you want to walk around, you can use the "cd" command, followed by
+"Hey, if you want to walk around, you can use the `cd' command, followed by
 the name of the location you want to go to. Listings in blue are valid
 locations."
+
+On the back, there is a hastily scribbled message:
+
+"Oh yeah, try typing `inventory'."

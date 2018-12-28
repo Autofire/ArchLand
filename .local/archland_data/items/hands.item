@@ -1,0 +1,9 @@
+#!/bin/sh
+
+echo -e "Your \e[96mhands\e[0m allow you to take items."
+echo -e ""
+
+echo -e "  \e[92mtake \e[97m[item name]\e[0m"
+echo -e "Use this to add a new item to your inventory."
+echo -e "This cannot be undone. (But why would you want to do that?)"
+
