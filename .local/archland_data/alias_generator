@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for i in $(echo $PATH | sed 's/:/ /g'); do
+	ls $i | sed "s/.*/alias &='echo \-bash: &: command not found'/"
+done > $1

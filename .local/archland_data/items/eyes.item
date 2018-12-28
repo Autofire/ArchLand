@@ -1,0 +1,22 @@
+#!/bin/sh
+
+echo -e "Your \e[96meyes\e[0m allow you to see things"
+
+echo -e ""
+
+echo -e "  \e[92mls \e[35m[optional room name]\e[0m"
+echo -en "Look around and \e[92ml\e[0mi\e[92ms\e[0mt your surroundings. "
+ echo -e "If you specify a room, you'll look in there."
+
+echo -e ""
+
+echo -e "  \e[92mmore \e[97m[object name]\e[0m"
+echo -e "Attempt to read an object and get \e[92mmore\e[0m info."
+echo -en "If there's a lot to read, you can use the \e[97mspace bar\e[0m "
+ echo -e "to read the next page, or \e[97mq\e[0m to stop reading."
+
+echo -e ""
+
+echo -e "  \e[92mclear\e[0m"
+echo -e "Clear the screen. This effect is totally cosmetic,"
+echo -e "so you'll never have to issue this command. Use it if things feel crowded."

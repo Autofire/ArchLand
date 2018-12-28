@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Usage: message "item_name" "message" "item_filename" "command_names"
+
+PATH=$OLD_PATH
+itemName=$1
+message=$2
+itemFile=$3
+
+shift 3
+commands="$@"
+
+clear
+
+echo -e '\e[5m\e[1m\e[97m'
+figlet -t -W -f slant.flf  ' You got the...'
+echo -e '\e[0m'
+
+echo -e '\e[96m\e[1m'
+figlet -t -W -c -f standard.flf $itemName
+echo -e '\e[0m'
+
+echo -e ""
+echo -e $message
+
+echo ""
+read -n 1 -s -p "Press any key..."
+echo ""
+
+ln -s $GAME_DATA/items/$itemFile $GAME_DATA/inventory/
+#echo $GAME_DATA/items/$itemFile
+for cmd in $commands
+do
+	#echo $(which "$cmd")
+	ln -s $(which "$cmd") $GAME_BIN/
+done

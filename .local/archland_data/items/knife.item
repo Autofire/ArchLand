@@ -1,0 +1,8 @@
+#!/bin/sh
+
+echo -e "It's a \e[96mknife\e[0m made for extracting zip files."
+echo -e ""
+
+echo -e "  \e[92munzip \e[97mzip-file.zip\e[0m"
+echo -e "Extracts the zip file. The zip file is not deleted."
+

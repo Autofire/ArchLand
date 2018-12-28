@@ -1,0 +1,10 @@
+#!/bin/bash
+
+PATH=$OLD_PATH
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+$DIR/getitem \
+	"KNIFE" \
+	'With this, you may now use \e[92munzip\e[0m to extract zip files!' \
+	'knife.item' \
+	'unzip'
+

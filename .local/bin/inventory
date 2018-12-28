@@ -1,0 +1,28 @@
+#!/bin/sh
+
+INV=$GAME_DATA/inventory
+
+#for file in $INV/*
+#do
+#	$file
+#done
+
+if [ $# -eq 0 ]
+then
+	echo -e "\t\e[97mListing all held items:\e[0m"
+	ls --color=auto $INV
+	echo ""
+	echo -e "Hint: type \e[92minventory \e[95m[item name]\e[0m for a list of available actions."
+else
+	for item in "$@"
+	do
+		if [ -e $INV/$item ]
+		then
+			echo ""
+			$INV/$item
+		else
+			echo "You don't have an item called $item"
+		fi
+		echo ""
+	done
+fi

@@ -1,0 +1,107 @@
+#!/bin/bash
+
+# This is a script for Arch Land. It allows the user to 'take' and item, deleting it
+# and running its setup script so that all the relevant functions are added, etc.
+#
+# It does some amount of checking to (try) to ensure that only valid items are accepted.
+# A valid item must have the exact same data as the original item, and it should share
+# its name both with a setup script and with an item.
+#
+# If run as `take --dry file`, debugging info will be printed and nothing will be
+# modified.
+
+
+# The 'extension' line below is a little weird looking, so here's a rough explanation:
+# After getting the filename (with extension), we then want the extension.
+# If we just did ${filename##*.}, it might do weird things for files without
+# extensions. Thus, we need to first check if the file has a `.` character at all.
+# If it does, then we grab the extension. Otherwise, the string is left empty.
+
+PATH=$OLD_PATH
+
+dry=false
+if [[ $1 = "--dry" ]]
+then
+	dry=true
+	shift
+fi
+
+fullname=$(basename -- "$1")
+extension=$([[ "$fullname" = *.* ]] && echo "${fullname##*.}" || echo '')
+filename="${fullname%.*}"
+
+master_item=$ITEMS_DIR/$fullname
+get_script=$GET_DIR/$fullname
+
+if [[ "$dry" = true ]] 
+then
+	echo "Doing a dry run..."
+	echo "Fullname:    $fullname"
+	echo "Extension:   $extension"
+	echo "Filename:    $filename"
+	echo "Master item: $master_item"
+	echo "Get script:  $get_script"
+	echo
+fi
+
+
+if [ $# -eq 0 ]
+then
+	echo -e "\e[97mWhat are you trying to take?\e[0m"
+	echo -e "(Hint: Try using \e[92mtake \e[97mname.item\e[0m)"
+elif [ $# -gt 1 ]
+then
+	echo -e "\e[91mYou can only take one thing at a time\e[0m"
+elif [[ ! -e $1 ]]
+then
+	echo -e "\e[91mCan't find \e[97m$fullname\e[0m"
+elif [[ ! -f $1 ]]
+then
+	echo -e "\e[91mHow are you going to carry \e[97m$fullname \e[91mwith you?\nIt's not a regular file!\e[0m"
+elif [[ ! -e $master_item ]] || [[ ! -e $get_script ]]
+then
+	echo -e "\e[91mThat's not a real item.\e[0m"
+else
+	#echo "Carrying on"
+	diff $master_item $1 -q > /dev/null
+	if [[ $? -eq 1 ]]
+	then
+		echo -e "\e[91mEither you've been tampering, or something has been corrupted..."
+		echo -e "That item exists in the database, but it doesn't match.\e[0m"
+	elif [[ "$dry" = true ]]
+	then
+		echo -e "Would run $get_script"
+	else
+		$get_script
+		rm $1
+	fi
+#else
+	# At this point, we know that we are trying to take a preexisting file which is not a
+	# folder. The next step is to peel it apart into name and extension. Then we can see
+	# if the given item is in our repetoir.
+
+	# The 'extension' line below is a little weird looking, so here's a rough explanation:
+	# After getting the filename (with extension), we then want the extension.
+	# If we just did ${filename##*.}, it might do weird things for files without
+	# extensions. Thus, we need to first check if the file has a `.` character at all.
+	# If it does, then we grab the extension. Otherwise, the string is left empty.
+
+#	PATH=$OLD_PATH
+#	filename=$(basename -- "$1")
+#	extension=$([[ "$filename" = *.* ]] && echo "${filename##*.}" || echo '')
+#	filename="${filename%.*}"
+#	
+#	echo "Its name is $filename, and its extension is $extension"
+#	
+#	if [[ $extension != "item" ]]
+#	then
+#		# Bad extension
+#		echo -e "\e[97m$1\e[91m doesn't look like an item...\e[0m"
+#	elif [[ ! -e $ITEMS_DIR/$1 ]] || [[ ! -e $GET_DIR/$filename ]]
+#	then
+#		# This item should share a description with the actual item we want.
+#		# Thus, we can do a comparison so see whether it's valid. `diff` returns
+#		# 1 when files do NOT match.
+#			
+#	fi
+fi

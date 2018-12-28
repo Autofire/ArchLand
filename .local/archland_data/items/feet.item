@@ -1,0 +1,18 @@
+#!/bin/sh
+
+echo -e "Your \e[96mfeet\e[0m allow you to move around"
+echo -e ""
+
+echo -e "  \e[92mcd \e[97mroom-name\e[0m"
+echo -e "Walk into the specified room. Short for \e[92mc\e[0mhange \e[92md\e[0mirectory."
+echo -e ""
+
+echo -e "  \e[92mcd\e[0m"
+echo -e "A special version of \e[92mcd\e[0m which teleports you home."
+echo -e "Use it when you're feeling a little lost!"
+echo -e ""
+
+echo -e "  \e[92mcd \e[97m..\e[0m"
+echo -e "Takes you to the room \"before\" this one."
+echo -e "This does not undo the previous move,"
+echo -e "but rather moves to the room \"above\" this one."
