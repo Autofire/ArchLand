@@ -1,4 +1,4 @@
 .gitconfig
-.viminfo
 .bash_history
+.viminfo
 *.swp
