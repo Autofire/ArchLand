@@ -1,3 +1,5 @@
+
 It's a painting of a woman. She stares back at you, pondering something.
 
-You feel like this is a famous painting, but you aren't sure why.
+You feel like this is a famous painting, but you aren't sure why. Isn't it
+called... the Mono Runtime? No, that doesn't make any sense.
