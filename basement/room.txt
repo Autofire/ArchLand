@@ -1,0 +1,7 @@
+
+You find yourself in a basement. It's a little dark, though pretty much
+everything here is that way in this world. There's a stairway back up to
+the main room.
+
+There are several boxes in the rooms, each with their own labels.
+They are sealed up, and can't be opened with your bare hands.
