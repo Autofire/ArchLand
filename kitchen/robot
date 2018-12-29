@@ -1,0 +1,76 @@
+#!/bin/bash
+
+PATH=$OLD_PATH
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+RANDOM=$$$(date +%s)
+
+memoryfile="$DIR"/.robot.mem
+colors=("blue" "red" "yellow" "violet" "green" "orange" "black" "white" "brown")
+randomcolor=${colors[ $RANDOM % ${#colors[@]} ]}
+
+echo
+
+
+if [[ ! -e "$memoryfile" ]]
+then
+	echo -e "\e[93mGreetings, Hero. I hope you are liking your new house.\e[0m"
+	echo
+	echo "(The robot hasn't moved an inch. Maybe try talking to it again?)"
+	touch $memoryfile
+else
+	memory=$(cat "$memoryfile")
+
+	if [[ $memory = "" ]]
+	then
+		echo -ne "\e[93mWhat do you want? Do you want to leave this place?\e[0m"
+		read -rp " [y/n]: " -N 1 response
+		echo
+
+		if [[ $response = "y" ]] || [[ $response = "Y" ]]
+		then
+			echo -e "\e[93mUgh, fine. But not until you learn how to"\
+				"use the history feature.\e[0m"
+			echo -e "\e[93mType \e[0m./\e[92mrobot \e[97m$randomcolor\e[93m"\
+				"into the commandline, ok?\e[0m"
+			echo "$randomcolor" > "$memoryfile"
+		else
+			echo -e "\e[93mThen stop being annoying.\e[0m"
+		fi
+	else
+		if [[ "$@" = "$memory" ]]
+		then
+			# The idea is to stop when the string gets long
+			if [[ ${#memory} -ge 60 ]]
+			then
+				# TODO
+				echo "Alright, that's good"
+			else
+				#echo "${#memory} characters so far"
+
+				memory="$memory $randomcolor"
+				echo $memory > $memoryfile
+				echo -e "\e[93mGood, now type this:\e[0m"
+				echo -e "./\e[92mrobot \e[97m$memory \e[0m"
+			fi
+		else
+			memory="$randomcolor"
+			echo $memory > $memoryfile
+
+			echo -e "\e[91mWRONG!\e[0m"
+			echo -e "\e[93mIf you're typing everything like a chump,"\
+				"\e[91mcut it out!\e[0m"
+			echo -e "\e[93mUse the up and down arrow keys to go to previous commands"
+			echo -e "and modify those. You'll save us both a lot of time.\e[0m"
+			echo -e
+			echo -e "(The robot lets out a sigh... or, at least, what sounds like one.)"
+			echo -e
+			echo -e "\e[93mLet's start over. Type this:\e[0m"
+			echo -e "./\e[92mrobot \e[97m$memory \e[0m"
+		fi
+	fi
+fi
+
+
+#read -rp "Talk to me? " -N 1 response
+#echo
+#echo $response
