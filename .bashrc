@@ -5,6 +5,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+
+
 PS1='[\u@\h \W]\$ '
 if [ -f ~/.dircolors ]; then
     eval `dircolors ~/.dircolors`
@@ -48,3 +50,14 @@ export GAME_BIN
 export GET_DIR
 export INVENTORY_DIR
 export ITEMS_DIR
+
+
+showed_intro_path=$GAME_DATA/showed_intro.mem
+if [[ ! -e "$showed_intro_path" ]]
+then
+	/usr/bin/touch "$showed_intro_path"
+	intro
+else
+	echo -e "\e[97mWelcome back! \e[0mIf it's been a while, the \e[92mintro \e[0mand"\
+		"\e[92minventory \e[0mcommands should be helpful."
+fi

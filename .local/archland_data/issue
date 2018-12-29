@@ -1,0 +1,21 @@
+[If installing this in another system, copy this into your /etc/issue file,
+ and then remove this note from it.]
+
+__      __     _                        _                 
+\\ \\    / /___ | | __  ___  _ __   ___  | |_  ___          
+ \\ \\/\\/ // -_)| |/ _|/ _ \\| '  \\ / -_) |  _|/ _ \\ _  _  _ 
+  \\_/\\_/ \\___||_|\\__|\\___/|_|_|_|\\___|  \\__|\\___/(_)(_)(_)
+                                                          
+                           ___              __       __                    __
+                          /   |  __________/ /_     / /   ____ _____  ____/ /
+                         / /| | / ___/ ___/ __ \\   / /   / __ `/ __ \\/ __  / 
+                        / ___ |/ /  / /__/ / / /  / /___/ /_/ / / / / /_/ /  
+                       /_/  |_/_/   \\___/_/ /_/  /_____/\\__,_/_/ /_/\\__,_/   
+                                                                             
+
+To begin, type "hero", hit enter. Do it again when asked for a password.
+(While typing a password, no text will show. This is NORMAL.)
+
+Powered by:
+	Arch Linux \r (\l)
+

@@ -2,7 +2,7 @@
 
 clear
 
-echo -e "\e[1m\e[32mWelcome to Arch Land!\e[0m"
+echo -e "\e[1m\e[93mWelcome to Arch Land!\e[0m"
 echo ""
 echo "Here, aspiring heroes such as yourself can learn the ways of the Linux"
 echo "command line. I know it appears to be a forboding land full of darkness,"
@@ -16,10 +16,10 @@ echo ""
 if [ $(pwd) = ${HOME} ]; then
 	echo -e "\e[1mAt the moment, you are home.\e[0m"
 	echo -e ""
-	echo -e "One of the commands you have is called \"\e[96mmore\e[0m\"".
+	echo -e "One of the commands you have is called \"\e[92mmore\e[0m\"".
 	echo -e "You can use it to print the contents of files. For example:"
 	echo -e ""
-	echo -e "\t\e[96mmore\e[0m \e[97mREADME.txt\e[0m"
+	echo -e "\t\e[92mmore\e[0m \e[97mREADME.txt\e[0m"
 	echo -e ""
 	echo -e "will print out the file called \"\e[97mREADME.txt\e[0m\". Give it a try!"
 	echo -e ""
